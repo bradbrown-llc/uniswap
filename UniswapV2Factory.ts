@@ -6,7 +6,7 @@ import * as Solc from 'https://cdn.jsdelivr.net/gh/bradbrown-llc/Solc@0.0.7/mod.
 
 const rawCompilationResults = await Docker.exec('bradthomasbrown/uniswapv2factory:1.0')
 const compilationResults = Solc.schemas.solcCompilationOutput.parse(JSON.parse(rawCompilationResults))
-const bytecode = compilationResults.contracts!['UniswapV2Factory.sol']!['UniswapV2Pair']!.evm!.bytecode!.object!
+const bytecode = compilationResults.contracts!['UniswapV2Factory.sol']!['UniswapV2Factory']!.evm!.bytecode!.object!
 const pairInitCode = compilationResults.contracts!['UniswapV2Factory.sol']!['UniswapV2Pair']!.evm!.bytecode!.object!
 const pairInitCodeHash = keccak256(hexToBytes(pairInitCode))
 export const UniswapV2Factory = { bytecode, pairInitCodeHash }
