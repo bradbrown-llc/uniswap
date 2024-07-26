@@ -1,4 +1,6 @@
 FROM denoland/deno:alpine-1.43.1 AS build
+COPY compile.ts .
+RUN deno cache compile.ts
 COPY . .
 RUN deno run -A compile.ts
 
